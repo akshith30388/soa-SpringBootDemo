@@ -10,8 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
 @Table(name="patient_table")
-public class Patient 
-{  
+public class Patient {  
 	@Id
 	@Column(name="pid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
