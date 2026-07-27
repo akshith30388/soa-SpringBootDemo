@@ -21,7 +21,7 @@ public class SwaggerConfig
                         .description("REST API Documentation for Patient Microservice")
                         .contact(new Contact()
                                 .name("KLUniversity")
-                                .email("demo@example.com")));
+                                .email("Akshithpola@gmail.com")));
     }
 }
 

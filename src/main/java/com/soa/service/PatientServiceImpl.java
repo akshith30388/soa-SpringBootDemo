@@ -58,6 +58,14 @@ public class PatientServiceImpl implements PatientServicee{
 		}
 	}
 
+	@Override
+	public int displayPatientCount() {
+		List<Patient> all=repo.findAll();
+		return all.size();
+	}
+
+	
+
 	
 
 }

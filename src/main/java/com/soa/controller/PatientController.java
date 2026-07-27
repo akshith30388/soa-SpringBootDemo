@@ -40,8 +40,8 @@ private PatientServiceImpl service;
 	}
 	// Display Patient By ID
 	//404 is for not found
-	@GetMapping("/display")
-	public ResponseEntity<?> displayPatientById(@RequestBody Long id){
+	@GetMapping("/display/{id}")
+	public ResponseEntity<?> displayPatientById(@PathVariable Long id){
 		Patient p=service.displaybyId(id);
 		if(p==null) {
 			return ResponseEntity.status(404).body("Patient ID Not Found");
@@ -81,5 +81,11 @@ private PatientServiceImpl service;
 			}
 		}
 	
-	
+		//
+		@GetMapping("/displayPatientCount")
+		public ResponseEntity<String> displayPatientCountt(){
+			int noofentities =service.displayPatientCount();;
+			String msg="Total Patients = "+noofentities;
+			return ResponseEntity.ok(msg);
+		}
 }
