@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soa.entity.Patient;
 import com.soa.service.PatientServiceImpl;
 
 @RestController
+@RequestMapping("/patient")
 public class PatientController {
 	@Autowired
 private PatientServiceImpl service;
@@ -25,13 +28,13 @@ private PatientServiceImpl service;
 	public String test() {
 	return "SOA";
 	}
-	//200 for 
+	//200 for ok 
 	@GetMapping("/displayall")
 	public ResponseEntity<List<Patient>> displayallpatients() {
 		List<Patient> patients=service.displayAllPatients();
 		return ResponseEntity.status(200).body(patients);
 	}
-	//201 created 
+	//201 for created 
 	@PostMapping("/add")
 	//client ---> server (json payload)
 	public ResponseEntity<Patient> add(@RequestBody Patient patient) {
@@ -40,8 +43,9 @@ private PatientServiceImpl service;
 	}
 	// Display Patient By ID
 	//404 is for not found
-	@GetMapping("/display/{id}")
-	public ResponseEntity<?> displayPatientById(@PathVariable Long id){
+	@GetMapping("/display")
+	//localhost:1234/patient/display?pid=1
+	public ResponseEntity<?> displayPatientById(@RequestParam("pid") Long id){
 		Patient p=service.displaybyId(id);
 		if(p==null) {
 			return ResponseEntity.status(404).body("Patient ID Not Found");
@@ -84,7 +88,7 @@ private PatientServiceImpl service;
 		//
 		@GetMapping("/displayPatientCount")
 		public ResponseEntity<String> displayPatientCountt(){
-			int noofentities =service.displayPatientCount();;
+			long noofentities =service.displayPatientCount();;
 			String msg="Total Patients = "+noofentities;
 			return ResponseEntity.ok(msg);
 		}
