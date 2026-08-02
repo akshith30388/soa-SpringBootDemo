@@ -14,7 +14,7 @@
     </parent>
 
     <groupId>com.soa</groupId>
-    <artifactId>soa-pratice1</artifactId>
+    <artifactId>SpringBootDemoProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>soa-pratice1</name>
     <description>Spring Boot Practice Project</description>

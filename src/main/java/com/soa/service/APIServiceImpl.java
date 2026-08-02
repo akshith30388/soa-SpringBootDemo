@@ -19,13 +19,13 @@ public class APIServiceImpl implements APIService {
     public List<ProductDto> displayallProducts() {
 
         ProductDto[] data = template.getForObject(apiurl, ProductDto[].class);
-
+        
         return Arrays.asList(data);
     }
-
-  
-    public ProductDto displayProductById(int id) {
-
+    
+    public ProductDto displayProductById(int id) { 
         return template.getForObject(apiurl + "/" + id, ProductDto.class);
     }
+    
+    
 }

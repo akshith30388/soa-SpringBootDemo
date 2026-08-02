@@ -1,7 +1,6 @@
 package com.soa.dto;
 
 public class ProductDto {
-	
 private int id;
 private String title;
 private double price;
@@ -44,5 +43,4 @@ public String getImage() {
 public void setImage(String image) {
 	this.image = image;
 }
-
 }
